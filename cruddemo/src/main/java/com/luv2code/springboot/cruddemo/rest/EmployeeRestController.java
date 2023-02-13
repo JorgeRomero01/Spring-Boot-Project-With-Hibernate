@@ -1,9 +1,21 @@
 package com.luv2code.springboot.cruddemo.rest;
 
-public class EmployeeRestController {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-	public EmployeeRestController() {
-		
+import com.luv2code.springboot.cruddemo.dao.EmployeeDAO;
+import com.luv2code.springboot.cruddemo.entity.Employee;
+
+@RestController
+@RequestMapping("api")
+public class EmployeeRestController {
+	
+	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	public EmployeeRestController(EmployeeDAO theEmployeeDAO) {
+		employeeDAO = theEmployeeDAO;
 	}
 
 }
