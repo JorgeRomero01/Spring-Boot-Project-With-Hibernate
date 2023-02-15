@@ -25,5 +25,10 @@ public class EmployeeRestController {
 	public List<Employee> findAll() {
 		return employeeDAO.findAll();
 	}
+	
+	@GetMapping("/employees/{theId}")
+	public Employee getEmployee(int theId) {
+		return employeeDAO.findById(theId);
+	}
 
 }
