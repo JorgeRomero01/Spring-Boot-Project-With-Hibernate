@@ -2,6 +2,9 @@ package com.luv2code.springboot.cruddemo.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.luv2code.springboot.cruddemo.dao.EmployeeDAO;
@@ -12,29 +15,33 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	private EmployeeDAO employeeDAO;
 	
-	
-	public EmployeeServiceImpl() {
-		
+	@Autowired
+	public EmployeeServiceImpl(EmployeeDAO theEmployeeDAO) {
+		employeeDAO = theEmployeeDAO;
 	}
 
 	@Override
+	@Transactional
 	public List<Employee> findAll() {
 		
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Employee findById(int theId) {
 		
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public void save(Employee theEmployee) {
 		
 	}
 
 	@Override
+	@Transactional
 	public void delete(int theId) {
 
 	}
