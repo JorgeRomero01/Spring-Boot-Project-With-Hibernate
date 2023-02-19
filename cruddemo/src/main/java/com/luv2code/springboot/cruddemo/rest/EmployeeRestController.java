@@ -5,6 +5,7 @@ import java.util.List;
 import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,6 +61,16 @@ public class EmployeeRestController {
 		return theEmployee;
 	}
 	
-	
-
+	@DeleteMapping("/employees/{theId}")
+	public String deleteEmployee(@PathVariable int theId) {
+		Employee tempEmployee = employeeService.findById(theId);
+		
+		if(tempEmployee == null) {
+			throw new RuntimeException("Employee Id not found - " + theId);
+		}
+		
+		employeeService.delete(theId);
+		
+		return "Deleted employee id - " + theId;
+	}
 }
